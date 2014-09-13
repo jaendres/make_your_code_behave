@@ -8,7 +8,7 @@ Feature: Search
     Scenario: Searching for a madone
         Given I am on "http://www.trekbikes.com/us/en/search"
         Then I fill in "search_field" with "Madone"
-        Then I clicked the search button
+        And I clicked the search button
         Then I wait for the page to load
         Then the url should match "/us/en/search/results/"
         Then I should see "Choose from 20 models"
