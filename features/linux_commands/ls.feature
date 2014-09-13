@@ -12,4 +12,5 @@ Feature: ls
   """
   bar
   foo
+  foo
   """

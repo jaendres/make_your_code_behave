@@ -6,6 +6,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use Behat\MinkExtension\Context\MinkContext;
 
 //
 // Require 3rd-party libraries here:
@@ -17,7 +18,7 @@ use Behat\Gherkin\Node\PyStringNode,
 /**
  * Features context.
  */
-class FeatureContext extends BehatContext
+class FeatureContext extends MinkContext
 {
     /**
      * Initializes context.
@@ -28,6 +29,18 @@ class FeatureContext extends BehatContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
+        $this->useContext('Trek', new Trek());
+    }
+
+	/**
+     * Set the dimensions of the window.
+     *
+     * @param array $size window dimenions: array('width' => integer, 'height' => integer)
+     * @param string $name window name (null for switching back to main window)
+     */
+    public function resizeWindow($width, $height)
+    {
+         $this->getSession()->resizeWindow($width, $height, 'current');
     }
 
     /** @Given /^I am in a directory "([^"]*)"$/ */
@@ -61,5 +74,7 @@ class FeatureContext extends BehatContext
             );
         }
     }
+	
 
+	
 }
