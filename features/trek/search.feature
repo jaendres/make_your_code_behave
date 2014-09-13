@@ -10,8 +10,8 @@ Feature: Search
         Then I fill in "search_field" with "Madone"
         And I clicked the search button
         Then I wait for the page to load
-        Then the url should match "/us/en/search/results/"
-        Then I should see "Choose from 20 models"
+        And the url should match "/us/en/search/results/"
+        And I should see "Choose from 20 models"
         And the response status code should be 200
 
 
